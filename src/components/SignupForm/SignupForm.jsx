@@ -1,22 +1,32 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import userService from '../../utils/userService';
 
 class SignupForm extends Component {
 
   state = {
-    organization: '',
+    name: '',
     email: '',
     password: '',
     passwordConf: ''
   };
 
   handleChange = (e) => {
+    this.props.updateMessage('');
     this.setState({
       [e.target.name]: e.target.value
     });
   }
 
-  // TODO handleSubmit function
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await userService.signup(this.state);
+      this.props.history.push('/');
+    } catch (err) {
+      this.props.updateMessage(err.message);
+    }
+  }
 
   isFormInvalid() {
     return !(this.state.name && this.state.email && this.state.password === this.state.passwordConf);
@@ -26,7 +36,7 @@ class SignupForm extends Component {
     return(
       <div>
         <header className="header-footer">Sign Up</header>
-        <form className="form-horizontal">
+        <form className="form-horizontal" onSubmit={this.handleSubmit}>
           <div className="form-group">
             <div className="col-sm-12">
               <input type="text" className="form-control" placeholder="Name" value={this.state.name} name="name" onChange={this.handleChange} />
