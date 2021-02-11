@@ -19,9 +19,9 @@ userSchema.set('toJSON', {
   }
 });
 
-userSchema.pre('save', function(next) {
-  const user = this;
-});
+userSchema.methods.comparePassword = function(tryPassword, cb) {
+  bcrypt.compare(tryPassword, this.password, cb);
+};
 
 userSchema.pre('save', function(next) {
   const user = this;
