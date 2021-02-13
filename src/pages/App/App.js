@@ -6,15 +6,21 @@ import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService';
 import NavBar from '../../components/NavBar/NavBar';
 import OrgPage from '../../pages/OrgPage/OrgPage';
+import orgService from '../../utils/orgService';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      user: userService.getUser()
+      user: userService.getUser(),
+      organization: {}
     };
   }
   
+  updateOrganization = (organization) => this.setState({ organization })
+
+  updateUser = (user) => this.setState({ user })
+
   handleLogout = () => {
     userService.logout();
     this.setState({ user: null });
@@ -22,6 +28,14 @@ class App extends Component {
 
   handleSignupOrLogin = () => {
     this.setState({user: userService.getUser()});
+  }
+
+  /*--- Lifecycle Methods ---*/
+  async componentDidMount() {
+    if (!this.state.organization.name && this.state.user) {
+      const organization = await orgService.getOrg();
+      this.setState({ organization });
+    } 
   }
 
   render() {
@@ -53,7 +67,10 @@ class App extends Component {
             <OrgPage
             {...props}
             user={this.state.user}
+            organization={this.state.organization}
             handleSignupOrLogin={this.handleSignupOrLogin}
+            updateOrganization={this.updateOrganization}
+            updateUser={this.updateUser}
             /> :
             <Redirect to='/login'/>
           }/>

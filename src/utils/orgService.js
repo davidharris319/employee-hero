@@ -18,6 +18,18 @@ function signup(org) {
   })
 }
 
+function getOrg() {
+  return fetch(BASE_URL + 'organization-page', {
+    method: 'GET',
+    headers: new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }),
+  })
+  .then(res => res.json());
+}
+
 export default {
-  signup
+  signup,
+  getOrg
 }

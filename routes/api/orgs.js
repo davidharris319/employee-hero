@@ -3,6 +3,7 @@ const router = express.Router();
 const orgsCtrl = require('../../controllers/orgs');
 
 router.post('/organization-page', checkAuth, orgsCtrl.create);
+router.get('/organization-page', checkAuth, orgsCtrl.show);
 
 /*--------- Helper Functions ----------*/
 function checkAuth(req, res, next) {

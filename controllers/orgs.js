@@ -1,23 +1,29 @@
 var Org = require('../models/org');
 var User = require('../models/user');
+const { createJWT } = require('../config/jwt.js');
 
 
 async function create(req, res) {
   const org = new Org(req.body);
-
   try {
-    await org.save();
+    const organization = await org.save();
     const user = await User.findById(req.user._id)
-    user.organization = org;
+    user.organization = organization;
     await user.save();
-    res.redirect('/organization-page');
+    const token = createJWT(user);
+    res.json({user, organization, token});
   } catch (err) {
-    res.json({err});
+    console.log(err)
+    res.json({"test": "fail"});
   }
 }
 
-
+async function show(req, res) {
+  const organization = await Org.findById(req.user.organization);
+  res.status(200).json(organization);
+}
 
 module.exports = {
-  create
+  create,
+  show
 };

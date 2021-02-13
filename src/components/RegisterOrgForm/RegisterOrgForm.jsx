@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import orgService from '../../utils/orgService';
+import userService from '../../utils/userService';
+import tokenService from '../../utils/tokenService';
+
 
 class RegisterOrgForm extends Component {
 
@@ -19,9 +22,11 @@ class RegisterOrgForm extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await orgService.signup(this.state);
+      const { user, token, organization } = await orgService.signup(this.state);
+      this.props.updateOrganization(organization);
+      tokenService.setToken(token)
+      this.props.updateUser(user);
       this.props.history.push('/organization-page');
-      // TODO do i need a handleSignupOrLogin handler here? 
     } catch (err) {
       this.props.updateMessage(err.message);
     }

@@ -17,7 +17,7 @@ class OrgPage extends Component {
       <div className="OrgPage">
         {this.props.user.organization ?
         <div>
-          <p>Welcome to Employee Hero. Your company is {this.props.user.organization}</p>
+          <p>Welcome to Employee Hero. Your company is {this.props.organization.name}</p>
         </div>
         :
         <div>
