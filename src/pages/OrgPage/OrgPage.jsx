@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import OrgSignupForm from '../../components/OrgSignupForm/OrgSignupForm';
+import RegisterOrgForm from '../../components/RegisterOrgForm/RegisterOrgForm';
 import './OrgPage.css';
 
 class OrgPage extends Component {
@@ -8,14 +8,26 @@ class OrgPage extends Component {
     this.state = {message: ''}
   }
  
+  updateMessage = (msg) => {
+    this.setState({message: msg});
+  }
+
   render() {
     return (
       <div className="OrgPage">
-        <div className="flex-h Welcome">
+        {this.props.user.organization ?
+        <div>
+          <p>Welcome to Employee Hero. Your company is {this.props.user.organization}</p>
+        </div>
+        :
+        <div>
+          <div className="flex-h Welcome">
           <p>Welcome to Employee Hero. Please add your oganization below.</p>
-          <OrgSignUpForm {...this.props} updateMessage={this.updateMessage}/>
+          </div>
+          <RegisterOrgForm {...this.props} updateMessage={this.updateMessage}/>
           <p>{this.state.message}</p>
         </div>
+        }
       </div>
     );
   }

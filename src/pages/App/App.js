@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService';
@@ -49,10 +49,13 @@ class App extends Component {
             /> 
           }/>
           <Route exact path='/organization-page' render={props => 
+            userService.getUser() ?
             <OrgPage
             {...props}
+            user={this.state.user}
             handleSignupOrLogin={this.handleSignupOrLogin}
-            /> 
+            /> :
+            <Redirect to='/login'/>
           }/>
         </Switch>
       </div>
