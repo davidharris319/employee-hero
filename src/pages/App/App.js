@@ -5,6 +5,7 @@ import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService';
 import NavBar from '../../components/NavBar/NavBar';
+import OrgPage from '../../pages/OrgPage/OrgPage';
 
 class App extends Component {
   constructor() {
@@ -26,13 +27,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          Welcome to your React App
+        <header className="header-footer">
+          Employee Hero
+
+        </header>
         <NavBar 
         user={this.state.user}
         handleLogout={this.handleLogout}
         />
-        </header>
         <Switch>
           <Route exact path='/signup' render={({ history }) => 
             <SignupPage
@@ -42,6 +44,12 @@ class App extends Component {
           }/>
           <Route exact path='/login' render={props => 
             <LoginPage
+            {...props}
+            handleSignupOrLogin={this.handleSignupOrLogin}
+            /> 
+          }/>
+          <Route exact path='/org-page' render={props => 
+            <OrgPage
             {...props}
             handleSignupOrLogin={this.handleSignupOrLogin}
             /> 
