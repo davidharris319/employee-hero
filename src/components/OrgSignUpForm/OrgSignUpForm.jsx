@@ -7,7 +7,7 @@ class OrgSignUpForm extends Component {
   state = {
     name: '',
     industry: '',
-    administrator: '' // update this section to automatically make whoever is adding the org to be the administrator
+    administrator: '' // TODO update this section to automatically make whoever is adding the org to be the administrator
   }
 
   handleChange = (e) => {
@@ -20,7 +20,11 @@ class OrgSignUpForm extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await 
+      await orgService.signup(this.state);
+      this.props.history.push('/organization-page');
+      // TODO do i need a handleSignupOrLogin handler here? 
+    } catch (err) {
+      this.props.updateMessage(err.message);
     }
   }
 
@@ -32,7 +36,7 @@ class OrgSignUpForm extends Component {
     return (
       <div>
         <header className="header-footer">Add Your org</header>
-        <form className="form-horizontal">
+        <form className="form-horizontal" onSubmit={this.handleSubmit} >
             <div className="form-group">
               <div className="col-sm-12">
                 <input type="text" className="form-control" placeholder="org Name" value={this.state.name} name="name" onChange={this.handleChange} />

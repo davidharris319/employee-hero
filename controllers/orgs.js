@@ -1,4 +1,5 @@
 var Org = require('../models/org');
+var Model = require('../models/user');
 
 
 async function create(req, res) {

@@ -1,5 +1,5 @@
-import React, { Component }from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
+import OrgSignupForm from '../../components/OrgSignupForm/OrgSignupForm';
 import './OrgPage.css';
 
 class OrgPage extends Component {
@@ -11,8 +11,10 @@ class OrgPage extends Component {
   render() {
     return (
       <div className="OrgPage">
-        <div className="flex-h align-flex-end">
-        <p>Welcome to Employee Hero. Please add your oganization below.</p>
+        <div className="flex-h Welcome">
+          <p>Welcome to Employee Hero. Please add your oganization below.</p>
+          <OrgSignUpForm {...this.props} updateMessage={this.updateMessage}/>
+          <p>{this.state.message}</p>
         </div>
       </div>
     );

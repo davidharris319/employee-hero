@@ -2,3 +2,8 @@
   display: flex;
   flex-direction: column;
 }
+
+.Welcome {
+  display: flex;
+  justify-content: center;
+}
