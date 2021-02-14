@@ -1,0 +1,13 @@
+.WelcomePage {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.Welcome {
+  display: flex;
+  justify-content: center;
+}

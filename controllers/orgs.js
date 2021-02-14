@@ -23,7 +23,13 @@ async function show(req, res) {
   res.status(200).json(organization);
 }
 
+async function index(req, res) {
+  const organizations = await Org.find({});
+  res.status(200).json(organizations);
+}
+
 module.exports = {
   create,
-  show
+  show,
+  index
 };

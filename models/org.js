@@ -1,12 +1,25 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-const orgSchema = new mongoose.Schema({
-  name: String,
-  admin_employee: String,
-  employees: []
-}, {
-  timestamps: true
-}
+const employeeSchema = new Schema(
+  {
+    name: String,
+    email: String,
+    // user: {type: Schema.Types.ObjectId, ref:'User', default: null }
+  }, {
+    timestamps: true
+  }
+)
+
+
+const orgSchema = new Schema(
+  {
+    name: String,
+    admin_employee: String,
+    employees: [employeeSchema]
+  }, {
+    timestamps: true
+  }
 )
 
 module.exports = mongoose.model('Org', orgSchema);

@@ -7,6 +7,8 @@ import userService from '../../utils/userService';
 import NavBar from '../../components/NavBar/NavBar';
 import OrgPage from '../../pages/OrgPage/OrgPage';
 import orgService from '../../utils/orgService';
+import WelcomePage from '../WelcomePage/WelcomePage';
+import RegisterForOrgPage from '../RegisterForOrgPage/RegisterForOrgPage';
 
 class App extends Component {
   constructor() {
@@ -32,7 +34,9 @@ class App extends Component {
 
   /*--- Lifecycle Methods ---*/
   async componentDidMount() {
-    if (!this.state.organization.name && this.state.user) {
+    
+
+    if (!this.state.organization.name && this.state.user && this.state.user.organization) {
       const organization = await orgService.getOrg();
       this.setState({ organization });
     } 
@@ -66,6 +70,25 @@ class App extends Component {
             userService.getUser() ?
             <OrgPage
             {...props}
+            user={this.state.user}
+            organization={this.state.organization}
+            handleSignupOrLogin={this.handleSignupOrLogin}
+            updateOrganization={this.updateOrganization}
+            updateUser={this.updateUser}
+            /> :
+            <Redirect to='/login'/>
+          }/>
+          <Route exact path='/welcome-page' render={props =>
+          userService.getUser() ? 
+          <WelcomePage
+          {...props}  
+          /> :
+          <Redirect to='/login'/>
+          }/>
+          <Route exact path='/organizations/register' render={props =>
+            userService.getUser() ? 
+            <RegisterForOrgPage
+            {...props}  
             user={this.state.user}
             organization={this.state.organization}
             handleSignupOrLogin={this.handleSignupOrLogin}
