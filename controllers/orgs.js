@@ -12,6 +12,7 @@ async function create(req, res) {
     organization.admin_employee = user.name;
     await org.save();
     await user.save();
+    const employee = new employee(req.user);
     const token = createJWT(user);
     res.json({user, organization, token});
   } catch (err) {

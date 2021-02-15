@@ -5,20 +5,15 @@ import tokenService from '../../utils/tokenService';
 
 class OrgListItem extends Component {
 
-  state = {
-    organization: '',
-  };
-
-
   handleSubmit = async (e, props) => {
     e.preventDefault();
     try {
       const orgId = this.props.organization._id;
-      const { user, organization } = await orgService.registerEmployee(orgId);
+      const { user, token, organization } = await orgService.registerEmployee(orgId);
       this.props.updateOrganization(organization);
-      // tokenService.setToken(token)
+      tokenService.setToken(token)
       this.props.updateUser(user);
-      this.props.history.push('/organization-page');
+      this.props.history.push('/organization/employee-list');
     } catch (err) {
       console.log(err);
     }
@@ -32,7 +27,7 @@ class OrgListItem extends Component {
         </div>
         <div className="panel-footer OrgListItem-action-panel">
           <h5>Industry: {this.props.organization.industry}</h5>
-          <form className="form-horizontal" onSubmit={this.props.handleSubmit} >
+          <form className="form-horizontal" onSubmit={this.handleSubmit} >
             <div className="form-group">
               <div className="col-sm-12">
                 <input type="hidden" className="form-control" value={this.props.organization._id} name="id"/>
