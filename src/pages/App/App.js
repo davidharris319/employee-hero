@@ -35,8 +35,6 @@ class App extends Component {
 
   /*--- Lifecycle Methods ---*/
   async componentDidMount() {
-    
-
     if (!this.state.organization.name && this.state.user && this.state.user.organization) {
       const organization = await orgService.getOrg();
       this.setState({ organization });
