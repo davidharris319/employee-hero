@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import OrgListItem from '../../components/OrgListItem/OrgListItem';
-import orgService from '../../utils/orgService';
-import './RegisterForOrgPage.css'
+import EmployeeListItem from '../../components/OrgListItem/OrgListItem';
 
-class RegisterForOrgPage extends Component {
+class OrganizationHomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {organizations: []}
@@ -13,19 +11,13 @@ class RegisterForOrgPage extends Component {
     this.setState({message: msg});
   }
 
-  /*--- Lifecycle Methods ---*/
-  async componentDidMount() {
-    const organizations = await orgService.getAllOrgs();
-    this.setState({organizations})
-  }
-
   render() {
     return (
       <div className="OrgPage">
-        <h3>Please Click on Your Organization to Complete Registration</h3>
+        <h3>Employees of {this.props.organization.name}</h3>
         <div className='OrgListPage-grid'>
           {this.state.organizations.map(organization =>
-            <OrgListItem
+            <EmployeeListItem
               {...this.props}
               organization={organization}
               key={organization._id}
@@ -36,4 +28,4 @@ class RegisterForOrgPage extends Component {
   }
 };
 
-export default RegisterForOrgPage;
+export default OrganizationHomePage;

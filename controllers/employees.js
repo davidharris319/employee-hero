@@ -9,10 +9,7 @@ async function registerToOrganization(req, res) {
     const employee = await User.findById(req.user._id)
     employee.organization = organization;
     await employee.save();
-    console.log('employee', employee);
-    console.log('org-pre-push', organization);
     organization.employees.push({name: employee.name, email: employee.email});
-    console.log('org', organization);
     await organization.save();
     const token = createJWT(employee);
     res.json({ user: employee, token, organization})

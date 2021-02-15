@@ -15,6 +15,7 @@ const employeeSchema = new Schema(
 const orgSchema = new Schema(
   {
     name: String,
+    industry: String, 
     admin_employee: String,
     employees: [employeeSchema]
   }, {

@@ -19,8 +19,8 @@ class WelcomePage extends Component {
           <p>Welcome to Employee Hero. Please choose the appropriate link below to complete the registration.</p>
         </div>
         <div>
-          <Link to="/organization-page">Add a New Organization</Link>      &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-          <Link to="/register-for-organization">Register to an Existing Organization</Link>
+          <Link to="/organizations/add">Add a New Organization</Link>      &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+          <Link to="/organizations/register">Register to an Existing Organization</Link>
         </div>
       </div>
     );

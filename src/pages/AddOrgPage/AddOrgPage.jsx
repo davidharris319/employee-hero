@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import RegisterOrgForm from '../../components/RegisterOrgForm/RegisterOrgForm';
-import './OrgPage.css';
+import './AddOrgPage.css';
 
-class OrgPage extends Component {
+class AddOrgPage extends Component {
   constructor(props) {
     super(props);
     this.state = {message: ''}
@@ -33,4 +33,4 @@ class OrgPage extends Component {
   }
 };
 
-export default OrgPage;
+export default AddOrgPage;
