@@ -26,7 +26,7 @@ class RegisterOrgForm extends Component {
       this.props.updateOrganization(organization);
       tokenService.setToken(token)
       this.props.updateUser(user);
-      this.props.history.push('/organization-page');
+      this.props.history.push('/organization/employee-list');
     } catch (err) {
       this.props.updateMessage(err.message);
     }
@@ -49,11 +49,6 @@ class RegisterOrgForm extends Component {
           <div className="form-group">
             <div className="col-sm-12">
               <input type="text" className="form-control" placeholder="Industry" value={this.state.industry} name="industry" onChange={this.handleChange} />
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="col-sm-12">
-              <input type="text" className="form-control" placeholder="Administrator" value={this.state.administrator} name="administrator" onChange={this.handleChange} />
             </div>
           </div>
           <div className="form-group">
