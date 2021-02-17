@@ -10,9 +10,9 @@ async function create(req, res) {
     const user = await User.findById(req.user._id)
     user.organization = organization;
     organization.admin_employee = user.name;
+    organization.employees.push({name: employee.name, email: employee.email});
     await org.save();
     await user.save();
-    const employee = new employee(req.user);
     const token = createJWT(user);
     res.json({user, organization, token});
   } catch (err) {

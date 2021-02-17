@@ -56,7 +56,6 @@ function registerEmployee(orgId) {
   })
 }
 
-
 export default {
   signup,
   getOrg,

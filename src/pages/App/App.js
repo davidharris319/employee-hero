@@ -10,13 +10,16 @@ import orgService from '../../utils/orgService';
 import WelcomePage from '../WelcomePage/WelcomePage';
 import RegisterForOrgPage from '../RegisterForOrgPage/RegisterForOrgPage';
 import OrganizationHomePage from '../OrganizationHomePage/OrganizationHomePage';
+import EmployeeDetailsPage from '../EmployeeDetailsPage/EmployeeDetailsPage';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       user: userService.getUser(),
-      organization: {}
+      organization: {
+        employees: []
+      }
     };
   }
   
@@ -26,20 +29,35 @@ class App extends Component {
 
   handleLogout = () => {
     userService.logout();
-    this.setState({ user: null });
+    this.setState({ 
+      user: null, 
+      organization: { 
+        employees: []
+    }
+   });
   }
 
   handleSignupOrLogin = () => {
     this.setState({user: userService.getUser()});
   }
 
-  /*--- Lifecycle Methods ---*/
-  async componentDidMount() {
+
+  setUserOrganization = async () => {
     if (!this.state.organization.name && this.state.user && this.state.user.organization) {
       const organization = await orgService.getOrg();
       this.setState({ organization });
     } 
   }
+
+  /*--- Lifecycle Methods ---*/
+  componentDidMount() {
+    this.setUserOrganization();
+  }
+
+  componentDidUpdate() {
+      this.setUserOrganization();
+    }
+
 
   render() {
     return (
@@ -99,6 +117,15 @@ class App extends Component {
           <Route exact path='/organization/employee-list' render={props =>
             userService.getUser() ? 
             <OrganizationHomePage
+            {...props}
+            organization={this.state.organization}
+            user={this.state.user}
+            /> :
+            <Redirect to='/login'/>
+          }/>
+          <Route exact path='/organization/employee/details' render={props => 
+            userService.getUser() ? 
+            <EmployeeDetailsPage
             {...props}
             organization={this.state.organization}
             user={this.state.user}
