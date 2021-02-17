@@ -11,6 +11,8 @@ import WelcomePage from '../WelcomePage/WelcomePage';
 import RegisterForOrgPage from '../RegisterForOrgPage/RegisterForOrgPage';
 import OrganizationHomePage from '../OrganizationHomePage/OrganizationHomePage';
 import EmployeeDetailsPage from '../EmployeeDetailsPage/EmployeeDetailsPage';
+import OrganizationQuestionPage from '../OrganizationQuestionPage/OrganizationQuestionPage';
+
 
 class App extends Component {
   constructor() {
@@ -19,7 +21,8 @@ class App extends Component {
       user: userService.getUser(),
       organization: {
         employees: []
-      }
+      },
+      questions: []
     };
   }
   
@@ -57,7 +60,6 @@ class App extends Component {
   componentDidUpdate() {
       this.setUserOrganization();
     }
-
 
   render() {
     return (
@@ -129,6 +131,15 @@ class App extends Component {
             {...props}
             organization={this.state.organization}
             user={this.state.user}
+            /> :
+            <Redirect to='/login'/>
+          }/>
+          <Route exact path='/organization/questions' render={props => 
+            userService.getUser() ?
+            <OrganizationQuestionPage
+            {...props}
+            user={this.state.user}
+            organization={this.state.organization}
             /> :
             <Redirect to='/login'/>
           }/>

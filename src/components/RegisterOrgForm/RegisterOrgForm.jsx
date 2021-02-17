@@ -26,7 +26,7 @@ class RegisterOrgForm extends Component {
       this.props.updateOrganization(organization);
       tokenService.setToken(token)
       this.props.updateUser(user);
-      this.props.history.push('/organization/employee-list');
+      this.props.history.push('/organization/questions');
     } catch (err) {
       this.props.updateMessage(err.message);
     }
