@@ -23,6 +23,7 @@ app.use('/api/users', require('./routes/api/users'));
 app.use(require('./config/auth'));
 app.use('/api/questions', require('./routes/api/questions'));
 app.use('/api/orgs', require('./routes/api/orgs'));
+app.use('/api/answers', require('./routes/api/answers'));
 
 
 // The following "catch all" route (note the *)is necessary

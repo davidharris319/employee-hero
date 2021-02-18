@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AddQuestionForm from '../../components/AddQuestionForm/AddQuestionForm';
-import QuestionList from '../../components/QuestionList/QuestionList';
+import QuestionListItem from '../../components/QuestionListItem/QuestionListItem';
 import './OrganizationQuestionPage.css';
 import questionService from '../../utils/questionService';
 
@@ -11,27 +11,41 @@ class OrganizationQuestionPage extends Component {
     this.state = {questions: []}
   }
 
+    addQuestion = (newQuestion) => this.setState({questions:[...this.state.questions, newQuestion]})
+    
+    setQuestions = (questions) => this.setState({questions})
+
+    filterQuestions = async () => {
+      const unfilteredQuestions = await questionService.getAllQuestions();
+      const org = this.props.organization._id;
+      const questions = unfilteredQuestions.filter(question => question.organization == org)
+      this.setQuestions(questions)
+    }
+
+
     /*--- Lifecycle Methods ---*/
     async componentDidMount() {
-    const unfilteredQuestions = await questionService.getAllQuestions();
-    const org = this.props.organization._id;
-    const questions = unfilteredQuestions.filter(question => question.organization == org)
-    this.setState({questions})
+      this.filterQuestions();
   }
+
+    async componentDidUpdate() {
+      this.filterQuestions();
+    }
 
 
   render() {
     return (
       <div>
-        {this.state.questions ?
+        {this.state.questions.length > 0 ?
           <div className="questionList">
             <h3>Current Question List for {this.props.organization.name}
             </h3>
             {this.state.questions.map((question, index) =>
-              <QuestionList
+              <QuestionListItem
               {...this.props}
               question={question}
               key={index}
+              setQuestions={this.setQuestions}
               /> 
               )}
           </div> :
@@ -43,6 +57,7 @@ class OrganizationQuestionPage extends Component {
             handleChange={this.handleChange}
             handleAddQuestion={this.handleAddQuestion}
             isFormInvalid={this.isFormInvalid}
+            addQuestion={this.addQuestion}
             />
         </div>
       </div>

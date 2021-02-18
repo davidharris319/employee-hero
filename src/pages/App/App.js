@@ -13,6 +13,7 @@ import OrganizationHomePage from '../OrganizationHomePage/OrganizationHomePage';
 import EmployeeDetailsPage from '../EmployeeDetailsPage/EmployeeDetailsPage';
 import OrganizationQuestionPage from '../OrganizationQuestionPage/OrganizationQuestionPage';
 import EditQuestionPage from '../EditQuestionPage/EditQuestionPage';
+import UserProfilePage from '../UserProfilePage/UserProfilePage';
 import questionService from '../../utils/questionService';
 
 
@@ -60,7 +61,7 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-      this.setUserOrganization();
+    this.setUserOrganization();
     }
 
   render() {
@@ -148,6 +149,15 @@ class App extends Component {
           <Route exact path='/organization/question/edit' render={props => 
             userService.getUser() ?
             <EditQuestionPage
+            {...props}
+            user={this.state.user}
+            organization={this.state.organization}
+            /> :
+            <Redirect to='/login'/>
+          }/>
+          <Route exact path='/user/profile' render={props => 
+            userService.getUser() ?
+            <UserProfilePage
             {...props}
             user={this.state.user}
             organization={this.state.organization}

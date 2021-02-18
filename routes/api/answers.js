@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const questionsCtrl = require('../../controllers/questions');
+const answersCtrl = require('../../controllers/answers');
 
-router.post('/create', questionsCtrl.create);
-router.get('/', questionsCtrl.index);
-router.delete('/:id', questionsCtrl.delete);
-router.put('/:id', questionsCtrl.update);
+router.post('/create', answersCtrl.create);
+// router.get('/', answersCtrl.index);
+// router.delete('/:id', answersCtrl.delete);
+// router.put('/:id', answersCtrl.update);
 
 
 /*--------- Helper Functions ----------*/

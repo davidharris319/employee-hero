@@ -24,8 +24,8 @@ async function index(req, res) {
 
 async function deleteOne(req, res) {
   try {
-    console.log('body', req.body)
-    const deletedQuestion = await Question.findByIdAndRemove(req.body);
+    console.log('params', req.params)
+    const deletedQuestion = await Question.findByIdAndRemove(req.params.id);
     res.status(200).json(deletedQuestion);
   } catch (err) {
     console.log(err)

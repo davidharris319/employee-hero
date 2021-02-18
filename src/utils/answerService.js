@@ -1,42 +1,20 @@
 import tokenService from './tokenService';
 
-const BASE_URL = '/api/questions/';
+const BASE_URL = '/api/answers/';
 
-function addQuestion(question) {
+function addAnswer(answer) {
   return fetch(BASE_URL + 'create', {
     method: 'POST',
     headers: new Headers({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + tokenService.getToken()
     }),
-    body: JSON.stringify(question)
+    body: JSON.stringify(answer)
   })
   .then(res => {
     if (res.ok) return res.json();
     throw new Error('Organization has already added this question!');
   })
-}
-
-function getAllQuestions() {
-  return fetch(BASE_URL, {
-    method: 'GET',
-    headers: new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + tokenService.getToken()
-    }),
-  })
-  .then(res => res.json());
-}
-
-function deleteOne(id) {
-  return fetch(`${BASE_URL}/${id}`, {
-    method: 'DELETE',
-    headers: new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + tokenService.getToken()
-    }),
-  })
-  .then(res => res.json());
 }
 
 function update(question) {
@@ -51,8 +29,7 @@ function update(question) {
 }
 
 export default {
-  addQuestion,
-  getAllQuestions,
-  deleteOne,
-  update
+  addAnswer,
+  // getAllQuestions,
+  // update
 }

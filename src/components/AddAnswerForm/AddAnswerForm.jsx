@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import answerService from '../../utils/answerService';
 import questionService from '../../utils/questionService';
 
 
-class AddQuestionForm extends Component {
+
+class AddAnswerForm extends Component {
   state = {
     formData: {
       body: ''
@@ -16,11 +18,11 @@ class AddQuestionForm extends Component {
     });
   }
 
-  handleAddQuestion = async (e) => {
+  handleAddAnswer = async (e) => {
     e.preventDefault();
     try {
-      const newQuestion = await questionService.addQuestion(this.state.formData);
-      this.props.addQuestion(newQuestion.question);
+      const newAnswer = await answerService.addAnswer(this.state.formData);
+      this.props.addAnswer(newAnswer.answer);
       this.setState({   
         formData: {
           body: ''
@@ -39,18 +41,18 @@ class AddQuestionForm extends Component {
     return(
       <div className='panel panel-default'>
         <div className="panel-heading">
-        <h3>Add an Introductory Question for {this.props.organization.name} Employees</h3>
+        <h3>{this.props.question.body}</h3>
         </div>
         <div className="panel-footer ">
-          <form className="form-horizontal" onSubmit={this.handleAddQuestion} >
+          <form className="form-horizontal" onSubmit={this.handleAddAnswer} >
             <div className="form-group">
               <div className="col-sm-12">
-                <input type="text" className="form-control" placeholder="Question" name="body" value={this.state.formData.body} onChange={this.handleChange} />
+                <input type="text" className="form-control" placeholder="Answer" name="body" value={this.state.formData.body} onChange={this.handleChange} />
               </div>
             </div>
             <div className="form-group">
               <div className="col-sm-12 text-center">
-                <button className="btn btn-default btn-sm">Add Question</button>&nbsp;&nbsp;
+                <button className="btn btn-default btn-sm">Add Answer</button>&nbsp;&nbsp;
               </div>
             </div>
           </form>
@@ -60,8 +62,4 @@ class AddQuestionForm extends Component {
   }
 }
 
-
-
-
-
-export default AddQuestionForm;
+export default AddAnswerForm;
