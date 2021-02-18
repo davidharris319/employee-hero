@@ -1,64 +1,52 @@
 import React, { Component } from 'react';
+import AddQuestionForm from '../../components/AddQuestionForm/AddQuestionForm';
+import QuestionList from '../../components/QuestionList/QuestionList';
+import './OrganizationQuestionPage.css';
 import questionService from '../../utils/questionService';
-import tokenService from '../../utils/tokenService';
 
 
 class OrganizationQuestionPage extends Component {
-  state = {
-    formData: {
-      body: '',
-    }
+  constructor(props) {
+    super(props);
+    this.state = {questions: []}
   }
 
-  
-  handleChange = (e) => {
-    const formData = {...this.state.formData, [e.target.name]: e.target.value};
-    this.setState({
-      formData
-    });
+    /*--- Lifecycle Methods ---*/
+    async componentDidMount() {
+    const unfilteredQuestions = await questionService.getAllQuestions();
+    const org = this.props.organization._id;
+    const questions = unfilteredQuestions.filter(question => question.organization == org)
+    this.setState({questions})
   }
 
-  handleAddQuestion = async (e, props) => {
-    e.preventDefault();
-    try {
-      await questionService.addQuestion(this.state.formData);
-      this.props.history.push('/organization/questions');
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
-  isFormInvalid() {
-    return !(this.state.body);
-  }
 
   render() {
     return (
-      <div className='panel panel-default'>
-        <div className="panel-heading">
-         <h3>Add an Introductory Question for {this.props.organization.name} Employees</h3>
-        </div>
-        <div className="panel-footer ">
-
-          <form className="form-horizontal" onSubmit={this.handleAddQuestion} >
-            {/* <div className="form-group">
-              <div className="col-sm-12">
-                <input type="hidden" className="form-control" value={this.props.organization._id} name="organization"/>
-              </div>
-            </div> */}
-            <div className="form-group">
-              <div className="col-sm-12">
-                <input type="text" className="form-control" placeholder="Question" name="body" value={this.state.formData.body} onChange={this.handleChange} />
-              </div>
-            </div>
-            <div className="form-group">
-              <div className="col-sm-12 text-center">
-                <button className="btn btn-default btn-sm">Add Question</button>&nbsp;&nbsp;
-              </div>
-            </div>
-          </form>
+      <div>
+        {this.state.questions ?
+          <div className="questionList">
+            <h3>Current Question List for {this.props.organization.name}
+            </h3>
+            {this.state.questions.map((question, index) =>
+              <QuestionList
+              {...this.props}
+              question={question}
+              key={index}
+              /> 
+              )}
+          </div> :
+          <div></div>
+        }
+        <div className="QuestionPage">
+          <AddQuestionForm
+            {...this.props}
+            handleChange={this.handleChange}
+            handleAddQuestion={this.handleAddQuestion}
+            isFormInvalid={this.isFormInvalid}
+            />
         </div>
       </div>
+
     )
   }
 }

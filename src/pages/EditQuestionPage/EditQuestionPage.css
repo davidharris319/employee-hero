@@ -1,0 +1,8 @@
+.EditQuestion {
+  text-align: center;
+}
+
+.EditQuestionForm {
+  display: flex;
+  justify-content: center;
+}

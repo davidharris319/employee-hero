@@ -12,6 +12,8 @@ import RegisterForOrgPage from '../RegisterForOrgPage/RegisterForOrgPage';
 import OrganizationHomePage from '../OrganizationHomePage/OrganizationHomePage';
 import EmployeeDetailsPage from '../EmployeeDetailsPage/EmployeeDetailsPage';
 import OrganizationQuestionPage from '../OrganizationQuestionPage/OrganizationQuestionPage';
+import EditQuestionPage from '../EditQuestionPage/EditQuestionPage';
+import questionService from '../../utils/questionService';
 
 
 class App extends Component {
@@ -137,6 +139,15 @@ class App extends Component {
           <Route exact path='/organization/questions' render={props => 
             userService.getUser() ?
             <OrganizationQuestionPage
+            {...props}
+            user={this.state.user}
+            organization={this.state.organization}
+            /> :
+            <Redirect to='/login'/>
+          }/>
+          <Route exact path='/organization/question/edit' render={props => 
+            userService.getUser() ?
+            <EditQuestionPage
             {...props}
             user={this.state.user}
             organization={this.state.organization}

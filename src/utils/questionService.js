@@ -17,6 +17,42 @@ function addQuestion(question) {
   })
 }
 
+function getAllQuestions() {
+  return fetch(BASE_URL, {
+    method: 'GET',
+    headers: new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }),
+  })
+  .then(res => res.json());
+}
+
+function deleteOne(id) {
+  return fetch(BASE_URL, {
+    method: 'DELETE',
+    headers: new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }),
+  })
+  .then(res => res.json());
+}
+
+function update(question) {
+  return fetch(`${BASE_URL}/${question._id}`, {
+    method: 'PUT',
+    headers: new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }),
+    body: JSON.stringify(question)
+  }).then(res => res.json());
+}
+
 export default {
-  addQuestion
+  addQuestion,
+  getAllQuestions,
+  deleteOne,
+  update
 }

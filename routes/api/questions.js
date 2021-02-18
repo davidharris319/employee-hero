@@ -3,6 +3,9 @@ const router = express.Router();
 const questionsCtrl = require('../../controllers/questions');
 
 router.post('/create', questionsCtrl.create);
+router.get('/', questionsCtrl.index);
+router.delete('/', questionsCtrl.delete);
+router.put('/:id', questionsCtrl.update);
 
 
 /*--------- Helper Functions ----------*/

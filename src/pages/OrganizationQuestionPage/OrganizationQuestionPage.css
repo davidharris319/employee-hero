@@ -1,0 +1,9 @@
+.QuestionPage {
+  display: flex;
+  justify-content: center;
+}
+
+.questionList {
+  text-align: center;
+  padding: 10px 0 50px;
+}

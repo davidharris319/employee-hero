@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 class EmployeeDetailsPage extends Component {
 
+
+  
   render() {
     return (
       <div>
