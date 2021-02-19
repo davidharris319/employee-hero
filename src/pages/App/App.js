@@ -73,6 +73,7 @@ class App extends Component {
         </header>
         <NavBar 
         user={this.state.user}
+        organization={this.state.organization}
         handleLogout={this.handleLogout}
         />
         <Switch>

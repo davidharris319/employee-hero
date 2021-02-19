@@ -28,8 +28,10 @@ class OrganizationQuestionPage extends Component {
       this.filterQuestions();
   }
 
-    async componentDidUpdate() {
-      this.filterQuestions();
+    async componentDidUpdate(prevProps, prevState) {
+      if(prevState.questions.length !== this.state.questions.length) {
+        this.filterQuestions();
+      }
     }
 
 

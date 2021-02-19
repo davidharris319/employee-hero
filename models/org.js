@@ -16,7 +16,7 @@ const orgSchema = new Schema(
   {
     name: String,
     industry: String, 
-    admin_employee: String,
+    admin_employee: {type: Schema.Types.ObjectId, ref:'User', default: null },
     employees: [employeeSchema]
   }, {
     timestamps: true

@@ -7,9 +7,10 @@ async function registerToOrganization(req, res) {
   try {
     const organization = await Org.findById(req.body.id)
     const employee = await User.findById(req.user._id)
+    const user = await User.findById(req.user._id)
     employee.organization = organization;
     await employee.save();
-    organization.employees.push({name: employee.name, email: employee.email});
+    organization.employees.push({name: employee.name, email: employee.email, user: user._id});
     await organization.save();
     const token = createJWT(employee);
     res.json({ user: employee, token, organization})

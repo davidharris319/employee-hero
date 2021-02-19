@@ -13,7 +13,7 @@ class OrgListItem extends Component {
       this.props.updateOrganization(organization);
       tokenService.setToken(token)
       this.props.updateUser(user);
-      this.props.history.push('/organization/employee-list');
+      this.props.history.push('/user/profile');
     } catch (err) {
       console.log(err);
     }

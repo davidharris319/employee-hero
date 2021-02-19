@@ -9,7 +9,7 @@ async function create(req, res) {
     const organization = await org.save();
     const user = await User.findById(req.user._id)
     user.organization = organization;
-    organization.admin_employee = user.name;
+    organization.admin_employee = user._id;
     organization.employees.push({name: user.name, email: user.email});
     await user.save();
     await org.save();

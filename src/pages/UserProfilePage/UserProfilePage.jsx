@@ -39,6 +39,7 @@ class UserProfilePage extends Component {
         <h4>Name: {this.props.user.name}</h4>
         <h5>Email: {this.props.user.email}</h5>
         <div>
+          
           {this.state.questions.map(question =>
             <AddAnswerForm
               {...this.props}

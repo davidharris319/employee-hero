@@ -1,16 +1,15 @@
 var Answer = require('../models/answer');
-var Question = require('../models/question');
 var Org = require('../models/org');
+var User = require('../models/user');
 
 
 async function create(req, res) {
   try {
     const answer = new Answer(req.body);
-    console.log(req);
-    const question = await Question.findById(req.user.organization);
     const org = await Org.findById(req.user.organization);
-    
-    answer.question = question
+    const user = await User.findById(req.user._id);
+
+    answer.user = user;
     answer.organization = org;
     await answer.save();
 

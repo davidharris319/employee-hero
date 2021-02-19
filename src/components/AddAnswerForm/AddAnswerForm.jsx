@@ -21,11 +21,12 @@ class AddAnswerForm extends Component {
   handleAddAnswer = async (e) => {
     e.preventDefault();
     try {
-      const newAnswer = await answerService.addAnswer(this.state.formData);
+      const question = this.props.question._id;
+      const newAnswer = await answerService.addAnswer({...this.state.formData, question: question});
       this.props.addAnswer(newAnswer.answer);
       this.setState({   
         formData: {
-          body: ''
+          body: '',
       }
     })
     } catch (err) {
