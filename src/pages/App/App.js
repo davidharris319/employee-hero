@@ -17,6 +17,7 @@ import CreateUserProfilePage from '../CreateUserProfilePage/CreateUserProfilePag
 import UserProfilePage from '../UserProfilePage/UserProfilePage';
 import EditAnswerPage from '../EditAnswerPage/EditAnswerPage';
 import AddNewAnswerForm from '../AddNewAnswerForm/AddNewAnswerForm';
+import LandingPage from '../LandingPage/LandingPage';
 import questionService from '../../utils/questionService';
 
 
@@ -70,7 +71,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="header-footer">
+        <header className="header-footer title">
           Employee Hero
 
         </header>
@@ -90,6 +91,11 @@ class App extends Component {
             <LoginPage
             {...props}
             handleSignupOrLogin={this.handleSignupOrLogin}
+            /> 
+          }/>
+          <Route exact path='/' render={props => 
+            <LandingPage
+            {...props}
             /> 
           }/>
           <Route exact path='/organizations/add' render={props => 

@@ -6,6 +6,13 @@
 
 .NavBar-link {
   margin: 0 10px;
+  font-size: 20px;
+  text-decoration: none;
+  color: mediumpurple;
+}
+
+.NavBar-link:hover {
+  color: mediumpurple;
 }
 
 .NavBar-welcome {

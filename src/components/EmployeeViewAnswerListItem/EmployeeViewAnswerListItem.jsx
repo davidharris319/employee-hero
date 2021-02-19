@@ -39,9 +39,9 @@ class EmployeeViewAnswerListItem extends Component {
       : <h4>This question has not been answered yet.</h4>
 
     return (
-    <div className='panel panel-default'>
-      <div className="panel-heading">
-        <h3 className="panel-title">{this.props.question.body}</h3>
+    <div className=' card  '>
+      <div className="card-header">
+        <h3 className="card-title">{this.props.question.body}</h3>
         {answersBody}
       </div>
     </div>

@@ -27,7 +27,7 @@ const NavBar = (props) => {
             </div>
           )
         } 
-        if (props.user && props.organization) {
+        if (props.user && props.organization.name) {
       return (
         <div className='NavBar'>
           <Link to='/organization/employee-list' className='NavBar-link'>{props.organization.name}</Link>
@@ -52,10 +52,9 @@ const NavBar = (props) => {
   return (
     <div className='NavBar'>
          <div>
-      <Link to='/login' className='NavBar-link'>LOG IN</Link>
+      <Link to='/login' className='NavBar-link'>Log In</Link>
       &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-      <Link to='/signup' className='NavBar-link'>SIGN UP</Link>
-      &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+      <Link to='/signup' className='NavBar-link'>Sign Up</Link>
     </div>
 
     </div>

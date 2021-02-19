@@ -16,7 +16,39 @@ code {
   height: 50px;
   padding: 10px;
   margin: 15px 0;
-  color: grey;
-  font-size: 18px;
+  color: mediumpurple;
+  /* font-weight: bold; */
+  font-size: 24px;
+  text-align: center;
+}
+
+.CancelButton:hover,
+.CancelButton,
+.CancelButton:active,
+.CancelButton:visited {
+  border: 1px solid mediumpurple;
+}
+
+.CancelLink,
+.CancelLink:hover,
+.CancelLink:active,
+.CancelLink:visited {
+  text-decoration: none;
+  color: mediumpurple;
+}
+
+.SubmitButton:hover,
+.SubmitButton,
+.SubmitButton:active,
+.SubmitButton:visited {
+  background-color: mediumpurple;
+  color: white;
+}
+
+.Welcome-text {
+  height: 50px;
+  padding: 10px;
+  margin: 15px 0;
+  font-size: 24px;
   text-align: center;
 }

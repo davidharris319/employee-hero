@@ -37,11 +37,11 @@ class AddQuestionForm extends Component {
 
   render() {
     return(
-      <div className='panel panel-default'>
-        <div className="panel-heading">
+      <div className='card'>
+        <div className="card-header">
         <h3>Add an Introductory Question for {this.props.organization.name} Employees</h3>
         </div>
-        <div className="panel-footer ">
+        <div className="card-footer ">
           <form className="form-horizontal" onSubmit={this.handleAddQuestion} >
             <div className="form-group">
               <div className="col-sm-12">

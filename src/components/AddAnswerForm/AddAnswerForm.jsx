@@ -28,7 +28,9 @@ class AddAnswerForm extends Component {
         formData: {
           body: '',
       }
-    })
+      
+    });
+    this.props.history.push('/user/profile');
     } catch (err) {
       console.log(err);
     }
@@ -40,11 +42,11 @@ class AddAnswerForm extends Component {
 
   render() {
     return(
-      <div className='panel panel-default'>
-        <div className="panel-heading">
+      <div className='card'>
+        <div className="card-header">
         <h3>{this.props.question.body}</h3>
         </div>
-        <div className="panel-footer ">
+        <div className="card-footer ">
           <form className="form-horizontal" onSubmit={this.handleAddAnswer} >
             <div className="form-group">
               <div className="col-sm-12">

@@ -11,3 +11,7 @@
   display: flex;
   justify-content: center;
 }
+
+.orgButtons {
+  padding: 10px;
+}

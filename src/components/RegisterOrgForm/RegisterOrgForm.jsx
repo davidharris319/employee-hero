@@ -42,18 +42,18 @@ class RegisterOrgForm extends Component {
         <header className="header-footer">Organization</header>
         <form className="form-horizontal" onSubmit={this.handleSubmit} >
           <div className="form-group">
-            <div className="col-sm-12">
+            <div className="col-sm-12 mt-2">
               <input type="text" className="form-control" placeholder="Organization Name" value={this.state.name} name="name" onChange={this.handleChange} />
             </div>
           </div>
           <div className="form-group">
-            <div className="col-sm-12">
+            <div className="col-sm-12 mt-2">
               <input type="text" className="form-control" placeholder="Industry" value={this.state.industry} name="industry" onChange={this.handleChange} />
             </div>
           </div>
-          <div className="form-group">
+          <div className="form-group mt-2">
             <div className="col-sm-12 text-center">
-              <button className="btn btn-default" disabled={this.isFormInvalid()}>Sign Up Organization</button>&nbsp;&nbsp;
+              <button className="btn SubmitButton" disabled={this.isFormInvalid()}>Sign Up Organization</button>&nbsp;&nbsp;
             </div>
           </div>
         </form>

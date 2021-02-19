@@ -13,7 +13,7 @@ class OrgListItem extends Component {
       this.props.updateOrganization(organization);
       tokenService.setToken(token)
       this.props.updateUser(user);
-      this.props.history.push('/user/profile/create');
+      this.props.history.push('/user/profile');
     } catch (err) {
       console.log(err);
     }
@@ -21,11 +21,11 @@ class OrgListItem extends Component {
 
   render() {
     return (
-      <div className='panel panel-default'>
-        <div className="panel-heading">
-          <h2 className="panel-title">{this.props.organization.name}</h2>
+      <div className=' card  Card-Text mt-5'>
+        <div className="mt-2">
+          <h2 className="card-title">{this.props.organization.name}</h2>
         </div>
-        <div className="panel-footer OrgListItem-action-panel">
+        <div className="OrgListItem-action-card mt-2">
           <h5>Industry: {this.props.organization.industry}</h5>
           <form className="form-horizontal" onSubmit={this.handleSubmit} >
             <div className="form-group">
@@ -33,9 +33,9 @@ class OrgListItem extends Component {
                 <input type="hidden" className="form-control" value={this.props.organization._id} name="id"/>
               </div>
             </div>
-            <div className="form-group">
+            <div className="form-group mt-3 mb-3">
               <div className="col-sm-12 text-center">
-                <button className="btn btn-default btn-sm">Register as an Employee of {this.props.organization.name}</button>&nbsp;&nbsp;
+                <button className="btn SubmitButton">Register as an Employee of {this.props.organization.name}</button>&nbsp;&nbsp;
               </div>
             </div>
           </form>

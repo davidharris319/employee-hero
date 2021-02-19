@@ -15,12 +15,18 @@ class WelcomePage extends Component {
   render() {
     return (
       <div className="WelcomePage">
-        <div className="Welcome">
+        <div className="Welcome-text">
           <p>Welcome to Employee Hero. Please choose the appropriate link below to complete the registration.</p>
         </div>
-        <div>
-          <Link to="/organizations/add">Add a New Organization</Link>      &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-          <Link to="/organizations/register">Register to an Existing Organization</Link>
+        <br/>
+        <div className="orgButtons">
+          <button className="CancelButton btn">
+            <Link className="CancelLink" to="/organizations/add">Add a New Organization</Link>
+          </button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button className="CancelButton btn">
+            <Link className="CancelLink" to="/organizations/register">Register to an Existing Organization</Link>
+          </button>
         </div>
       </div>
     );

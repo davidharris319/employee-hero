@@ -12,9 +12,9 @@ const QuestionListItem = (props) => {
   }
   
   return (
-  <div className='panel panel-default'>
-    <div className="panel-heading">
-      <h2 className="panel-title">{props.question.body}</h2>
+  <div className=' card  '>
+    <div className="card-header">
+      <h2 className="card-title">{props.question.body}</h2>
       <Link className="btn btn-xs" to={{
         pathname:'question/edit',
         state: {question: props.question}

@@ -1,0 +1,18 @@
+.LandingPage-card {
+  display: flex;
+  margin: auto;
+  width: 60%;
+}
+
+.Welcome-text {
+  height: 50px;
+  padding: 10px;
+  margin: 15px 0;
+  font-size: 24px;
+  text-align: center;
+}
+
+.card-border {
+  margin-top: 5%%;
+  border: none;
+}
