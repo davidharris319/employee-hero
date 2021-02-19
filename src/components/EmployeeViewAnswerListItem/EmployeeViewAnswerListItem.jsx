@@ -27,22 +27,22 @@ class EmployeeViewAnswerListItem extends Component {
   }
 
   async componentDidUpdate(prevProps, prevState) {
-    if(prevState.answers.length !== this.state.answers.length) {
+    if(prevState.answers && this.state.answers && prevState.answers.length !== this.state.answers.length) {
       this.filterAnswers();
     }
   }
 
 
   render() {
+    const answersBody = this.state.answers ? 
+      <h4>{this.state.answers.body}</h4> 
+      : <h4>This question has not been answered yet.</h4>
+
     return (
     <div className='panel panel-default'>
       <div className="panel-heading">
         <h3 className="panel-title">{this.props.question.body}</h3>
-        <h4>{this.state.answers.body}</h4>
-        <Link className="btn btn-xs" to={{
-          pathname:'profile/edit',
-          state: {answer: this.state.answers}
-        }}>Edit Answer</Link>
+        {answersBody}
       </div>
     </div>
   )}

@@ -16,6 +16,7 @@ import EditQuestionPage from '../EditQuestionPage/EditQuestionPage';
 import CreateUserProfilePage from '../CreateUserProfilePage/CreateUserProfilePage';
 import UserProfilePage from '../UserProfilePage/UserProfilePage';
 import EditAnswerPage from '../EditAnswerPage/EditAnswerPage';
+import AddNewAnswerForm from '../AddNewAnswerForm/AddNewAnswerForm';
 import questionService from '../../utils/questionService';
 
 
@@ -179,6 +180,15 @@ class App extends Component {
           <Route exact path='/user/profile/edit' render={props => 
             userService.getUser() ?
             <EditAnswerPage
+            {...props}
+            user={this.state.user}
+            organization={this.state.organization}
+            /> :
+            <Redirect to='/login'/>
+          }/>
+          <Route exact path='/user/profile/create/answer' render={props => 
+            userService.getUser() ?
+            <AddNewAnswerForm
             {...props}
             user={this.state.user}
             organization={this.state.organization}
