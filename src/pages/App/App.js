@@ -13,7 +13,9 @@ import OrganizationHomePage from '../OrganizationHomePage/OrganizationHomePage';
 import EmployeeDetailsPage from '../EmployeeDetailsPage/EmployeeDetailsPage';
 import OrganizationQuestionPage from '../OrganizationQuestionPage/OrganizationQuestionPage';
 import EditQuestionPage from '../EditQuestionPage/EditQuestionPage';
+import CreateUserProfilePage from '../CreateUserProfilePage/CreateUserProfilePage';
 import UserProfilePage from '../UserProfilePage/UserProfilePage';
+import EditAnswerPage from '../EditAnswerPage/EditAnswerPage';
 import questionService from '../../utils/questionService';
 
 
@@ -156,9 +158,27 @@ class App extends Component {
             /> :
             <Redirect to='/login'/>
           }/>
-          <Route exact path='/user/profile' render={props => 
+          <Route exact path='/user/profile/create' render={props => 
+            userService.getUser() ?
+            <CreateUserProfilePage
+            {...props}
+            user={this.state.user}
+            organization={this.state.organization}
+            /> :
+            <Redirect to='/login'/>
+          }/>
+          <Route exact path='/user/profile/' render={props => 
             userService.getUser() ?
             <UserProfilePage
+            {...props}
+            user={this.state.user}
+            organization={this.state.organization}
+            /> :
+            <Redirect to='/login'/>
+          }/>
+          <Route exact path='/user/profile/edit' render={props => 
+            userService.getUser() ?
+            <EditAnswerPage
             {...props}
             user={this.state.user}
             organization={this.state.organization}

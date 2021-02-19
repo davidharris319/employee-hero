@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import EmployeeViewAnswerListItem from '../../components/EmployeeViewAnswerListItem/EmployeeViewAnswerListItem';
-import answerService from '../../utils/answerService';
+import AnswerListItem from '../../components/AnswerListItem/AnswerListItem';
+import AddAnswerForm from '../../components/AddAnswerForm/AddAnswerForm';
 import questionService from '../../utils/questionService';
 
-class EmployeeDetailsPage extends Component {
+
+
+class CreateUserProfilePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,6 +25,7 @@ class EmployeeDetailsPage extends Component {
     this.setQuestions(questions)
   }
 
+
   /*--- Lifecycle Methods ---*/
   async componentDidMount() {
     this.filterQuestions();
@@ -39,15 +42,14 @@ class EmployeeDetailsPage extends Component {
     return (
       <div className="OrgPage">
         <h3>Employee Profile</h3>
-        <h4>Name: {this.props.location.state.employee.name}</h4>
-        <h5>Email: {this.props.location.state.employee.email}</h5>
+        <h4>Name: {this.props.user.name}</h4>
+        <h5>Email: {this.props.user.email}</h5>
         <div>
           
           {this.state.questions.map(question =>
-            <EmployeeViewAnswerListItem
+            <AddAnswerForm
               {...this.props}
               question={question}
-              employee={this.props.location.state.employee}
               key={question._id}
               addAnswer={this.addAnswer}
             />)}
@@ -57,4 +59,4 @@ class EmployeeDetailsPage extends Component {
   }
 };
 
-export default EmployeeDetailsPage;
+export default CreateUserProfilePage;

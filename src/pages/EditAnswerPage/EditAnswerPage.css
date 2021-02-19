@@ -1,0 +1,8 @@
+.EditAnswer {
+  text-align: center;
+}
+
+.EditAnswerForm {
+  display: flex;
+  justify-content: center;
+}

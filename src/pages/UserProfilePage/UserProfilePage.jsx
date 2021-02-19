@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AnswerListItem from '../../components/AnswerListItem/AnswerListItem';
-import AddAnswerForm from '../../components/AddAnswerForm/AddAnswerForm';
+import answerService from '../../utils/answerService';
 import questionService from '../../utils/questionService';
 
 
@@ -14,8 +14,6 @@ class UserProfilePage extends Component {
     }
   }
 
-  addAnswer = (newAnswer) => this.setState({answers:[...this.state.answers, newAnswer]})
-
   setQuestions = (questions) => this.setState({questions})
 
   filterQuestions = async () => {
@@ -25,25 +23,31 @@ class UserProfilePage extends Component {
     this.setQuestions(questions)
   }
 
-
   /*--- Lifecycle Methods ---*/
   async componentDidMount() {
     this.filterQuestions();
-}
+  }
+
+  async componentDidUpdate(prevProps, prevState) {
+    if(prevState.questions.length !== this.state.questions.length) {
+      this.filterQuestions();
+    }
+  }
 
 
   render() {
     return (
       <div className="OrgPage">
-        <h3>Employee Profile</h3>
+        <h3>Your Employee Profile</h3>
         <h4>Name: {this.props.user.name}</h4>
         <h5>Email: {this.props.user.email}</h5>
         <div>
           
           {this.state.questions.map(question =>
-            <AddAnswerForm
+            <AnswerListItem
               {...this.props}
               question={question}
+
               key={question._id}
               addAnswer={this.addAnswer}
             />)}

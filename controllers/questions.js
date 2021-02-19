@@ -17,7 +17,6 @@ async function create(req, res) {
 }
 
 async function index(req, res) {
-  const org = await Org.findById(req.user.organization);
   const questions = await Question.find({});
   res.status(200).json(questions);
 }

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import answerService from '../../utils/answerService';
 
 
-class AnswerListItem extends Component {
+class EmployeeViewAnswerListItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,7 +16,7 @@ class AnswerListItem extends Component {
   filterAnswers = async () => {
     const unfilteredAnswers = await answerService.getAllAnswers();
     const question = this.props.question._id;
-    const filteredAnswers = unfilteredAnswers.filter(answer => answer.question == question && answer.user == this.props.user._id)
+    const filteredAnswers = unfilteredAnswers.filter(answer => answer.question == question && answer.user == this.props.employee._id)
     const answers = filteredAnswers.pop();
     this.setAnswers(answers);
   }
@@ -48,4 +48,4 @@ class AnswerListItem extends Component {
   )}
 }
 
-export default AnswerListItem;
+export default EmployeeViewAnswerListItem;

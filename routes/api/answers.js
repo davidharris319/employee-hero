@@ -3,9 +3,8 @@ const router = express.Router();
 const answersCtrl = require('../../controllers/answers');
 
 router.post('/create', answersCtrl.create);
-// router.get('/', answersCtrl.index);
-// router.delete('/:id', answersCtrl.delete);
-// router.put('/:id', answersCtrl.update);
+router.get('/', answersCtrl.index);
+router.put('/:id', answersCtrl.update);
 
 
 /*--------- Helper Functions ----------*/

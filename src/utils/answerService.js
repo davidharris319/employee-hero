@@ -28,8 +28,19 @@ function update(question) {
   }).then(res => res.json());
 }
 
+function getAllAnswers() {
+  return fetch(BASE_URL, {
+    method: 'GET',
+    headers: new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }),
+  })
+  .then(res => res.json());
+}
+
 export default {
   addAnswer,
-  // getAllQuestions,
-  // update
+  getAllAnswers,
+  update
 }

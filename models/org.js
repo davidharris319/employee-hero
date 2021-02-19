@@ -5,7 +5,7 @@ const employeeSchema = new Schema(
   {
     name: String,
     email: String,
-    // user: {type: Schema.Types.ObjectId, ref:'User', default: null }
+    userRef: {type: Schema.Types.ObjectId, ref:'User'}
   }, {
     timestamps: true
   }
