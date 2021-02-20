@@ -42,13 +42,13 @@ Sign up and register your organization to get started. You can then add question
 
 ## ![Organization Sign Up](static/images/organization_sign_up.png)
 
+### Employee Registering for an Organization
+
+## ![Employee Registering for an Organization](static/images/org_list.png)
+
 ### Adding Organization Questions
 
 ## ![Adding Organization Questions](static/images/add_organization_questions.png)
-
-### Employee Registering For a Company
-
-## ![Employee Registering For a Company](static/images/org_list.png)
 
 ### Employee Answering Organization Question
 
