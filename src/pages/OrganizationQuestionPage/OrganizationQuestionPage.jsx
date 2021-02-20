@@ -40,7 +40,7 @@ class OrganizationQuestionPage extends Component {
       <div>
         {this.state.questions.length > 0 ?
           <div className="questionList">
-            <h3>Current Question List for {this.props.organization.name}
+            <h3 className="mb-5">Current Question List for {this.props.organization.name}
             </h3>
             {this.state.questions.map((question, index) =>
               <QuestionListItem

@@ -52,3 +52,28 @@ code {
   font-size: 24px;
   text-align: center;
 }
+
+.Card-Text {
+  text-align: center;
+}
+
+.CardBorder {
+  border: 1px solid mediumpurple;
+}
+
+.answer-font {
+  font-size: 25px;
+}
+
+.CardWidth {
+  min-width: 40%;
+}
+
+.center-btn {
+  display: flex;
+  justify-content: center;
+}
+
+.CardWidth-Min {
+  min-width: 700px;
+}

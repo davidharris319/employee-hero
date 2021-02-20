@@ -39,6 +39,7 @@ class EmployeeDetailsPage extends Component {
     return (
       <div className="OrgPage">
         <h3>Employee Profile</h3>
+        <br/>
         <h4>Name: {this.props.location.state.employee.name}</h4>
         <h5>Email: {this.props.location.state.employee.email}</h5>
         <div>

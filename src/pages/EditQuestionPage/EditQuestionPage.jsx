@@ -28,16 +28,25 @@ class EditQuestionPage extends Component {
 
   render() {
     return (
-      <div className="EditQuestion">
-        <h1>Edit Question</h1>
-        <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <input className="form-control EditQuestionForm" name="body" value={this.state.formData.body} onChange={this.handleChange} required />
-          </div>
-          <button type="submit" className="btn btn-xs" disabled={this.state.invalidForm}>Update Question</button>&nbsp;&nbsp;
-          <Link to='/organization/questions'>Cancel</Link>
-        </form>
+      <div className="OrgPage">
+        <div className="card CardBorder mt-4 CardWidth">
+          <h1 className="Card-Text m-2">Edit Question</h1>
+          <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
+            <div className="form-group">
+              <input className="form-control EditQuestionForm" name="body" value={this.state.formData.body} onChange={this.handleChange} required />
+            </div>
+            <div className="center-btn mt-3 mb-3">
+              <button type="submit" className="btn SubmitButton" disabled={this.state.invalidForm}>Update Question</button>&nbsp;&nbsp;
+              <button className="CancelButton btn">
+              <Link className="CancelLink" to='/organization/questions'>Cancel</Link>
+              </button>
+            </div>
+
+            
+          </form>
+        </div>
       </div>
+
     );
   }
 }

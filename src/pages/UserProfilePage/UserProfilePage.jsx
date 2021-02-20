@@ -39,6 +39,7 @@ class UserProfilePage extends Component {
     return (
       <div className="OrgPage">
         <h3>Your Employee Profile</h3>
+        <br/>
         <h4>Name: {this.props.user.name}</h4>
         <h5>Email: {this.props.user.email}</h5>
         <div>

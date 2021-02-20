@@ -35,15 +35,15 @@ class EmployeeViewAnswerListItem extends Component {
 
   render() {
     const answersBody = this.state.answers ? 
-      <h4>{this.state.answers.body}</h4> 
-      : <h4>This question has not been answered yet.</h4>
+      <p className="Card-Text answer-font mb-2 mx-2 CardWidth-Min ">{this.state.answers.body}</p> 
+      : <p className="Card-Text answer-font mb-2 mx-2 CardWidth-Min ">This question has not been answered yet.</p>
 
     return (
-    <div className=' card  '>
-      <div className="card-header">
-        <h3 className="card-title">{this.props.question.body}</h3>
-        {answersBody}
+    <div className=' card CardBorder mt-4 '>
+      <div className="Card-Text mt-2">
+        <h3 className="card-title mx-2">{this.props.question.body}</h3>
       </div>
+      {answersBody}
     </div>
   )}
 }

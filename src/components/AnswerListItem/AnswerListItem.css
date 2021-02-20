@@ -1,12 +1,8 @@
-.EditAnswer {
+.center-form {
   text-align: center;
 }
 
-.EditAnswerForm {
+.center-btn {
   display: flex;
   justify-content: center;
-}
-
-.CardWidth {
-  min-width: 50px;
 }

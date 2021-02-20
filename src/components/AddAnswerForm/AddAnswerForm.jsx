@@ -42,25 +42,28 @@ class AddAnswerForm extends Component {
 
   render() {
     return(
-      <div className='card'>
-        <div className="card-header">
-        <h3>{this.props.question.body}</h3>
-        </div>
-        <div className="card-footer ">
-          <form className="form-horizontal" onSubmit={this.handleAddAnswer} >
-            <div className="form-group">
-              <div className="col-sm-12">
-                <input type="text" className="form-control" placeholder="Answer" name="body" value={this.state.formData.body} onChange={this.handleChange} />
+      <div>
+        <div className="card CardBorder mt-4 CardWidth-Min">
+          <div className="m-2 CardWidth">
+            <h3 className="Card-Text">{this.props.question.body}</h3>
+          </div>
+          <div className="m-2 CardWidth">
+            <form className="form-horizontal" onSubmit={this.handleAddAnswer} >
+              <div className="form-group">
+                <div className="col-sm-12">
+                  <input type="text" className="form-control" placeholder="Answer" name="body" value={this.state.formData.body} onChange={this.handleChange} />
+                </div>
               </div>
-            </div>
-            <div className="form-group">
-              <div className="col-sm-12 text-center">
-                <button className="btn btn-default btn-sm">Add Answer</button>&nbsp;&nbsp;
+              <div className="form-group">
+                <div className="col-sm-12 text-center my-1">
+                  <button className="btn SubmitButton mt-2">Add Answer</button>&nbsp;&nbsp;
+                </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
+
     )
   }
 }

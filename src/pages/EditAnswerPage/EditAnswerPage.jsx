@@ -27,16 +27,26 @@ class EditAnswerPage extends Component {
 
   render() {
     return (
-      <div className="EditAnswer">
-        <h1>Edit Question</h1>
-        <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <input className="form-control EditAnswerForm" name="body" value={this.state.formData.body} onChange={this.handleChange} required />
+      <div className="OrgPage">
+        <div className="card CardBorder mt-4 CardWidth">
+          <div className="m-2 CardWidth">
+            <h1 className="Card-Text">Edit Question</h1>
+            <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
+              <div className="form-group m-2">
+                <input className="form-control EditAnswerForm" name="body" value={this.state.formData.body} onChange={this.handleChange} required />
+              </div>
+              <div className="center-btn mt-3 mb-1">
+                <button type="submit" className="btn SubmitButton" disabled={this.state.invalidForm}>Update Answer</button>&nbsp;&nbsp;
+                <button className="CancelButton btn">
+                <Link className="CancelLink" to='/user/profile'>Cancel</Link>
+                </button>
+              </div>
+            </form>
           </div>
-          <button type="submit" className="btn btn-xs" disabled={this.state.invalidForm}>Update Answer</button>&nbsp;&nbsp;
-          <Link to='/user/profile'>Cancel</Link>
-        </form>
+        </div>
       </div>
+
+
     );
   }
 }

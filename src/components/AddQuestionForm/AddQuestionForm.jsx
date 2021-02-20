@@ -37,11 +37,11 @@ class AddQuestionForm extends Component {
 
   render() {
     return(
-      <div className='card'>
-        <div className="card-header">
-        <h3>Add an Introductory Question for {this.props.organization.name} Employees</h3>
+      <div className='card CardBorder mt-2 CardWidth-Min'>
+        <div className="m-3 CardWidth">
+        <h3 className="Card-Text">Add an Introductory Question for {this.props.organization.name} Employees</h3>
         </div>
-        <div className="card-footer ">
+        <div className="m-2 CardWidth">
           <form className="form-horizontal" onSubmit={this.handleAddQuestion} >
             <div className="form-group">
               <div className="col-sm-12">
@@ -49,8 +49,8 @@ class AddQuestionForm extends Component {
               </div>
             </div>
             <div className="form-group">
-              <div className="col-sm-12 text-center">
-                <button className="btn btn-default btn-sm">Add Question</button>&nbsp;&nbsp;
+              <div className="col-sm-12 text-center my-1">
+                <button className="btn SubmitButton mt-2">Add Question</button>&nbsp;&nbsp;
               </div>
             </div>
           </form>

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import answerService from '../../utils/answerService';
+import './AnswerListItem.css';
 
 
 class AnswerListItem extends Component {
@@ -36,28 +37,35 @@ class AnswerListItem extends Component {
 
   render() {
     const answersBody = this.state.answers ? 
-      <div>
-        <h4>{this.state.answers.body}</h4> 
-        <Link className="btn btn-xs" to={{
-          pathname:'profile/edit',
-          state: {answer: this.state.answers}
-        }}>Edit Answer</Link>
+      <div className="center-form">
+        <p className="answer-font mx-2">{this.state.answers.body}</p> 
+        <div className="center-btn">
+          <button className="CancelButton btn mb-3">
+            <Link className="CancelLink" to={{
+              pathname:'profile/edit',
+              state: {answer: this.state.answers}
+            }}>Edit Answer</Link>
+          </button>
+        </div>
       </div>
       : 
-      <div>
-        <h4>This question has not been answered yet.</h4>
-        <Link className="btn btn-xs" to={{
+      <div className="center-form">
+        <p className="answer-font mx-2">This question has not been answered yet.</p>
+        <button className="CancelButton btn mb-3">
+        <Link className="CancelLink" to={{
           pathname:'profile/create/answer',
           state: {question: this.props.question}
         }}>Add Answer</Link>
+        </button>
+
       </div>
 
     return (
-    <div className='card'>
-      <div className="card-header">
+    <div className='card CardBorder mt-4'>
+      <div className="Card-Text m-2">
         <h3 className="card-title">{this.props.question.body}</h3>
-        {answersBody}
       </div>
+      {answersBody}
     </div>
   )}
 }
