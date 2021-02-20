@@ -20,6 +20,18 @@ Sign up and register your organization to get started. You can then add question
 
 ---
 
+## Technologies Used
+
+- Deployed on Heroku
+- Styled with Bootstrap
+- Database hosted on MongoDB Atlas Database
+- Express
+- React
+- Node JS
+- Google Fonts
+
+---
+
 ## Screenshots
 
 ### Landing Page
@@ -65,18 +77,6 @@ Sign up and register your organization to get started. You can then add question
 ### Employee Profile
 
 ## ![Employee Profile](static/images/employee_profile.png)
-
----
-
-## Technologies Used
-
-- Deployed on Heroku
-- Styled with Bootstrap
-- Database hosted on MongoDB Atlas Database
-- Express
-- React
-- Node JS
-- Google Fonts
 
 ---
 
