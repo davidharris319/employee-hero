@@ -75,7 +75,8 @@ Sign up and register your organization to get started. You can then add question
 - Database hosted on MongoDB Atlas Database
 - Express
 - React
-- JavaScript
+- Node JS
+- Google Fonts
 
 ---
 
